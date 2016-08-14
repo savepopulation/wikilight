@@ -43,6 +43,12 @@ public final class ApiModule {
 
     @Provides
     @Singleton
+    WikiServices provideWikiServices(Retrofit retrofit) {
+        return retrofit.create(WikiServices.class);
+    }
+
+    @Provides
+    @Singleton
     Retrofit provideRetrofit(String baseUrl, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
