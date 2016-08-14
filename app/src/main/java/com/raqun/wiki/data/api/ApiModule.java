@@ -20,10 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module(
         complete = false,
-        library = true,
-        injects = {
-                WikiServices.class
-        }
+        library = true
 )
 
 public final class ApiModule {
