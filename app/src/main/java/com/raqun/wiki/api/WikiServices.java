@@ -1,4 +1,4 @@
-package com.raqun.wiki.data.api;
+package com.raqun.wiki.api;
 
 /**
  * Created by tyln on 14.08.16.
