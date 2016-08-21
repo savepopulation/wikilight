@@ -12,7 +12,6 @@ android {
         applicationId "com.raqun.wiki"
         minSdkVersion 17
         targetSdkVersion 24
-        versionCode 1
         versionName "$mainVersionName"
         buildConfigField("java.lang.String", "BASE_URL", '"https://en.wikipedia.org/w/api.php"')
     }
@@ -20,7 +19,6 @@ android {
     productFlavors {
         prod {
             versionCode 1
-            versionName "1.0.0"
         }
 
         dev {
