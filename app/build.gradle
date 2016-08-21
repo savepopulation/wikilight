@@ -1,7 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
+def mainVersionName = "1.0.0"
+
 android {
+
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
 
@@ -10,21 +13,20 @@ android {
         minSdkVersion 17
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "$mainVersionName"
+        buildConfigField("java.lang.String", "BASE_URL", '"https://en.wikipedia.org/w/api.php"')
     }
 
     productFlavors {
         prod {
             versionCode 1
             versionName "1.0.0"
-            buildConfigField("java.lang.String", "BASE_URL", '"https://en.wikipedia.org/w/api.php"')
         }
 
         dev {
             applicationIdSuffix ".dev"
             versionCode 1
-            versionName "1.0.0.dev"
-            buildConfigField("java.lang.String", "BASE_URL", '"https://en.wikipedia.org/w/api.php"')
+            versionName mainVersionName + applicationIdSuffix
         }
     }
 
