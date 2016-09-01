@@ -1,5 +1,6 @@
 package com.raqun.wiki.ui.search;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.raqun.wiki.ui.BasePresenter;
@@ -15,5 +16,7 @@ public interface SearchContract {
 
     interface Presenter extends BasePresenter {
         void search(@Nullable String query);
+
+        void setQuery(@NonNull String query);
     }
 }
