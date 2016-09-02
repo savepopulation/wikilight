@@ -2,22 +2,20 @@ package com.raqun.wiki.data;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Map;
+
 /**
  * Created by tyln on 14.08.16.
  */
 public class Query {
-    @SerializedName("Query")
-    private String query;
+    @SerializedName("pages")
+    private Map<String, Page> pages;
 
-    public Query(String query) {
-        this.query = query;
+    public Map<String, Page> getPages() {
+        return pages;
     }
 
-    public String getQuery() {
-        return query;
-    }
-
-    public void setQuery(String query) {
-        this.query = query;
+    public void setPages(Map<String, Page> pages) {
+        this.pages = pages;
     }
 }
