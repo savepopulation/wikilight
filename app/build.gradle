@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'realm-android'
 
 def mainVersionName = "1.0.0"
 
@@ -69,5 +70,4 @@ dependencies {
 
     // Other
     compile 'com.google.code.gson:gson:2.4'
-
 }

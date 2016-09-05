@@ -2,16 +2,25 @@ package com.raqun.wiki.data;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by tyln on 1.09.16.
  */
-public class Page {
+public class Page extends RealmObject {
+    @PrimaryKey
+    private String query;
     @SerializedName("pageid")
     private long id;
     @SerializedName("title")
     private String title;
     @SerializedName("extract")
     private String content;
+
+    public Page() {
+
+    }
 
     public Page(long id, String title, String content) {
         this.id = id;
@@ -41,5 +50,13 @@ public class Page {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 }

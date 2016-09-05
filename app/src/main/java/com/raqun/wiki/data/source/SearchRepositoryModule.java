@@ -11,12 +11,16 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.realm.Realm;
 
 /**
  * Created by tyln on 16.08.16.
  */
 @Module
 public class SearchRepositoryModule {
+    public SearchRepositoryModule() {
+
+    }
 
     @Singleton
     @Provides

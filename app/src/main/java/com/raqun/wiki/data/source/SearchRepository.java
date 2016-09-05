@@ -55,12 +55,13 @@ public class SearchRepository implements SearchDataSource {
                 .doOnNext(new Action1<Page>() {
                     @Override
                     public void call(Page page) {
-                        // save to local
+                        mSearchLocalDataSource.save(query, page);
                         mResultCache.put(query, page);
                     }
                 });
 
-        return Observable.concat(remoteResult, localResult).first()
+        return Observable.concat(localResult, remoteResult)
+                .first()
                 .map(new Func1<Page, Page>() {
                     @Override
                     public Page call(Page page) {
@@ -70,6 +71,11 @@ public class SearchRepository implements SearchDataSource {
                         return page;
                     }
                 });
+    }
+
+    @Override
+    public void save(@NonNull String query, @NonNull Page page) {
+        // Empty method
     }
 
     @Nullable

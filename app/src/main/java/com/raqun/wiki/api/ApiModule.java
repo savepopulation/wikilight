@@ -26,6 +26,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public final class ApiModule {
     private static final String BASE_URL = BuildConfig.BASE_URL;
 
+    public ApiModule() {
+
+    }
+
     @Provides
     @Singleton
     public String provideBaseUrl() {

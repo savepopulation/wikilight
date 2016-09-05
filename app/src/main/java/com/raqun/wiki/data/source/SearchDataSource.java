@@ -14,4 +14,6 @@ import rx.Observable;
  */
 public interface SearchDataSource {
     Observable<Page> search(@NonNull String query);
+
+    void save(@NonNull String query, @NonNull Page page);
 }

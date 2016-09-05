@@ -41,4 +41,9 @@ public class SearchRemoteDataSource implements SearchDataSource {
             }
         });
     }
+
+    @Override
+    public void save(@NonNull String query, @NonNull Page page) {
+        // Empty method
+    }
 }
