@@ -2,6 +2,8 @@ package com.raqun.wiki.data.source;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.Query;
@@ -10,13 +12,18 @@ import com.raqun.wiki.data.source.local.SearchLocalDataSource;
 import com.raqun.wiki.data.source.remote.SearchRemoteDataSource;
 
 import java.util.LinkedHashMap;
+import java.util.NoSuchElementException;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.realm.Realm;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by tyln on 16.08.16.
@@ -55,10 +62,13 @@ public class SearchRepository implements SearchDataSource {
                 .doOnNext(new Action1<Page>() {
                     @Override
                     public void call(Page page) {
-                        mSearchLocalDataSource.save(query, page);
-                        mResultCache.put(query, page);
+                        if (page != null) {
+                            mSearchLocalDataSource.save(query, page);
+                            mResultCache.put(query, page);
+                        }
                     }
                 });
+
 
         return Observable.concat(localResult, remoteResult)
                 .first()
@@ -66,7 +76,7 @@ public class SearchRepository implements SearchDataSource {
                     @Override
                     public Page call(Page page) {
                         if (page == null) {
-                            throw new IllegalArgumentException();
+                            throw new NoSuchElementException("No result found!");
                         }
                         return page;
                     }

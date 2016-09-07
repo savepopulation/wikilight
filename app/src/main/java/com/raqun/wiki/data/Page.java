@@ -19,7 +19,6 @@ public class Page extends RealmObject {
     private String content;
 
     public Page() {
-
     }
 
     public Page(long id, String title, String content) {
