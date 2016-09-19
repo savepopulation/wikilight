@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">wiki</string>
+
+    <!-- Actions -->
+    <string name="action_search">Search</string>
+
 </resources>

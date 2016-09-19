@@ -26,12 +26,20 @@ public class SearchActivity extends BaseActivity {
     }
 
     @Override
+    protected int getMenuRes() {
+        return 0;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         SearchFragment searchFragment = (SearchFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_main);
         if (searchFragment == null) {
             searchFragment = SearchFragment.newInstance();
-            getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_main, searchFragment).commit();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.framelayout_main, searchFragment)
+                    .commit();
         }
 
         DaggerSearchComponent.builder()

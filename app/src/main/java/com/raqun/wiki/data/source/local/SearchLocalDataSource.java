@@ -64,12 +64,12 @@ public class SearchLocalDataSource implements SearchDataSource {
     public void save(@NonNull String query, @NonNull Page page) {
         final Realm realm = Realm.getInstance(mRealmConfiguration);
         realm.beginTransaction();
-        final Page p = realm.createObject(Page.class);
-        p.setQuery(query);
-        p.setId(page.getId());
-        p.setTitle(page.getTitle());
-        p.setContent(page.getContent());
-        realm.copyToRealmOrUpdate(p);
+        final Page realmPage = realm.createObject(Page.class);
+        realmPage.setQuery(query);
+        realmPage.setId(page.getId());
+        realmPage.setTitle(page.getTitle());
+        realmPage.setContent(page.getContent());
+        realm.copyToRealmOrUpdate(realmPage);
         realm.commitTransaction();
         realm.close();
     }

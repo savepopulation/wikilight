@@ -24,7 +24,6 @@ import rx.subscriptions.CompositeSubscription;
  * Created by tyln on 21.08.16.
  */
 public class SearchPresenter implements SearchContract.Presenter {
-
     @NonNull
     private SearchContract.View mView;
 
@@ -42,6 +41,7 @@ public class SearchPresenter implements SearchContract.Presenter {
         this.mView = view;
         this.mSearchRepository = searchRepository;
         this.mCompositeSubscription = new CompositeSubscription();
+        this.mQuery = "";
 
         mView.setPresenter(this);
     }
