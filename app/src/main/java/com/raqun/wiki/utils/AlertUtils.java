@@ -20,7 +20,7 @@ public final class AlertUtils {
         Toast.makeText(context, mesage, Toast.LENGTH_SHORT).show();
     }
 
-    public interface AlertButtonClickListener {
+    interface AlertButtonClickListener {
         void onButtonClicked(DialogInterface dialog, int id);
     }
 

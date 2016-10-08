@@ -13,12 +13,12 @@ import dagger.Provides;
 public class MainPresenterModule {
     private final MainContract.View mView;
 
-    public MainPresenterModule(@NonNull MainContract.View view) {
+    MainPresenterModule(@NonNull MainContract.View view) {
         this.mView = view;
     }
 
     @Provides
-    public MainContract.View provideMainContractView() {
+    MainContract.View provideMainContractView() {
         return this.mView;
     }
 }

@@ -4,4 +4,7 @@
     <!-- Actions -->
     <string name="action_search">Search</string>
 
+    <!-- Alerts -->
+    <string name="error_empty_query">Pleas enter a valid Search Query!</string>
+
 </resources>

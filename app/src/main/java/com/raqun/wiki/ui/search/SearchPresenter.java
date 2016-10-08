@@ -25,30 +25,29 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class SearchPresenter implements SearchContract.Presenter {
     @NonNull
-    private SearchContract.View mView;
+    private final SearchContract.View mView;
 
     @NonNull
-    private SearchRepository mSearchRepository;
+    private final SearchRepository mSearchRepository;
 
     @NonNull
-    private CompositeSubscription mCompositeSubscription;
+    private final CompositeSubscription mCompositeSubscription;
 
-    @NonNull
-    private String mQuery;
+    @Nullable
+    private final String mQuery;
 
     @Inject
-    public SearchPresenter(@NonNull SearchContract.View view, @NonNull SearchRepository searchRepository) {
+    SearchPresenter(@NonNull SearchContract.View view, @NonNull SearchRepository searchRepository, @Nullable String query) {
         this.mView = view;
         this.mSearchRepository = searchRepository;
         this.mCompositeSubscription = new CompositeSubscription();
-        this.mQuery = "";
+        this.mQuery = query;
 
         mView.setPresenter(this);
     }
 
-    @Override
-    public void search(@Nullable String query) {
-        this.mQuery = query;
+    private void search() {
+        mCompositeSubscription.clear();
         final Subscription subscription = mSearchRepository.search(this.mQuery)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -74,18 +73,11 @@ public class SearchPresenter implements SearchContract.Presenter {
 
     @Override
     public void subscribe() {
-        if (!TextUtils.isEmpty(this.mQuery)) {
-            search(this.mQuery);
-        }
+        search();
     }
 
     @Override
     public void unsubscribe() {
         mCompositeSubscription.clear();
-    }
-
-    @Override
-    public void setQuery(@NonNull String query) {
-        this.mQuery = query;
     }
 }

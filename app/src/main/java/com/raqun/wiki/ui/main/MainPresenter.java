@@ -12,7 +12,7 @@ public class MainPresenter implements MainContract.Presenter {
     private final MainContract.View mView;
 
     @Inject
-    public MainPresenter(@NonNull MainContract.View view) {
+    MainPresenter(@NonNull MainContract.View view) {
         this.mView = view;
 
         mView.setPresenter(this);

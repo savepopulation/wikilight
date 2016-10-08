@@ -22,12 +22,6 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        mPresenter.setQuery("google");
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         mPresenter.subscribe();

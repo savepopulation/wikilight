@@ -15,8 +15,6 @@ public interface SearchContract {
     }
 
     interface Presenter extends BasePresenter {
-        void search(@Nullable String query);
 
-        void setQuery(@NonNull String query);
     }
 }
