@@ -5,7 +5,7 @@ package com.raqun.wiki.ui;
  */
 public interface BasePresenter {
 
-    void onSubscribe();
+    void subscribe();
 
-    void onUnsubccribe();
+    void unsubscribe();
 }

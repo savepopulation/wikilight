@@ -1,5 +1,8 @@
 package com.raqun.wiki.ui.search;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -8,15 +11,25 @@ import dagger.Provides;
  */
 
 @Module
-public class SearchPresenterModule {
+class SearchPresenterModule {
+    @NonNull
     private final SearchContract.View mView;
 
-    public SearchPresenterModule(SearchContract.View view) {
+    @Nullable
+    private final String mQuery;
+
+    SearchPresenterModule(@NonNull SearchContract.View view, @Nullable String query) {
         this.mView = view;
+        this.mQuery = query;
     }
 
     @Provides
-    public SearchContract.View provideSearchContractView() {
+    SearchContract.View provideSearchContractView() {
         return mView;
+    }
+
+    @Provides
+    String provideQuery() {
+        return this.mQuery;
     }
 }

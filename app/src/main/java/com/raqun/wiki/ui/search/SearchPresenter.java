@@ -2,12 +2,22 @@ package com.raqun.wiki.ui.search;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
+import com.raqun.wiki.data.Page;
+import com.raqun.wiki.data.Query;
+import com.raqun.wiki.data.Result;
 import com.raqun.wiki.data.source.SearchRepository;
 import com.raqun.wiki.ui.BasePresenter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import rx.Observer;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -15,35 +25,59 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class SearchPresenter implements SearchContract.Presenter {
     @NonNull
-    private SearchContract.View mView;
+    private final SearchContract.View mView;
 
     @NonNull
-    private SearchRepository mSearchRepository;
+    private final SearchRepository mSearchRepository;
 
     @NonNull
-    private CompositeSubscription mCompositeSubscription;
+    private final CompositeSubscription mCompositeSubscription;
+
+    @Nullable
+    private final String mQuery;
 
     @Inject
-    public SearchPresenter(@NonNull SearchContract.View view, @NonNull SearchRepository searchRepository) {
+    SearchPresenter(@NonNull SearchContract.View view, @NonNull SearchRepository searchRepository, @Nullable String query) {
         this.mView = view;
         this.mSearchRepository = searchRepository;
         this.mCompositeSubscription = new CompositeSubscription();
+        this.mQuery = query;
 
         mView.setPresenter(this);
     }
 
-    @Override
-    public void search(@Nullable String query) {
-        // Empty Method
+    private void search() {
+        mCompositeSubscription.clear();
+        final Subscription subscription = mSearchRepository.search(this.mQuery)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Page>() {
+                    @Override
+                    public void onCompleted() {
+                        // Completed
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        mView.onDefaultMessage(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(Page page) {
+                        mView.onDefaultMessage(page.getContent());
+                    }
+                });
+
+        mCompositeSubscription.add(subscription);
     }
 
     @Override
-    public void onSubscribe() {
-        // Load search history
+    public void subscribe() {
+        search();
     }
 
     @Override
-    public void onUnsubccribe() {
-        // Empty Method
+    public void unsubscribe() {
+        mCompositeSubscription.clear();
     }
 }

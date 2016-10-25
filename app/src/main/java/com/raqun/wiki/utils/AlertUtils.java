@@ -2,6 +2,8 @@ package com.raqun.wiki.utils;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.widget.Toast;
@@ -14,22 +16,23 @@ public final class AlertUtils {
 
     }
 
-    public static void alert(Context context, String mesage) {
+    public static void alert(@NonNull final Context context, @Nullable final String mesage) {
         Toast.makeText(context, mesage, Toast.LENGTH_SHORT).show();
     }
 
-    public interface AlertButtonClickListener {
+    interface AlertButtonClickListener {
         void onButtonClicked(DialogInterface dialog, int id);
     }
 
-    public static AlertDialog createNewAlertDialog(Context context,
-                                                   CharSequence title,
-                                                   CharSequence message,
-                                                   boolean isCancelable,
-                                                   CharSequence positiveButtonText,
-                                                   CharSequence negativeButtonText,
-                                                   final AlertButtonClickListener positiveButtonClickListener,
-                                                   final AlertButtonClickListener negativeButtonClickListener) {
+    @NonNull
+    public static AlertDialog createNewAlertDialog(@NonNull Context context,
+                                                   @Nullable final CharSequence title,
+                                                   @NonNull final CharSequence message,
+                                                   final boolean isCancelable,
+                                                   @Nullable final CharSequence positiveButtonText,
+                                                   @Nullable final CharSequence negativeButtonText,
+                                                   @Nullable final AlertButtonClickListener positiveButtonClickListener,
+                                                   @Nullable final AlertButtonClickListener negativeButtonClickListener) {
         android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(context).setMessage(message)
                 .setCancelable(isCancelable);
 
@@ -61,7 +64,6 @@ public final class AlertUtils {
             });
         }
 
-        AlertDialog alertDialog = dialog.create();
-        return alertDialog;
+        return dialog.create();
     }
 }

@@ -1,17 +1,15 @@
-package com.raqun.wiki.ui.search;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+package com.raqun.wiki.ui.main;
 
 import com.raqun.wiki.ui.BasePresenter;
 import com.raqun.wiki.ui.BaseView;
+import com.raqun.wiki.ui.search.SearchContract;
 
 /**
- * Created by tyln on 21.08.16.
+ * Created by tyln on 19.09.16.
  */
-public interface SearchContract {
-
+public interface MainContract {
     interface View extends BaseView<Presenter> {
+
     }
 
     interface Presenter extends BasePresenter {

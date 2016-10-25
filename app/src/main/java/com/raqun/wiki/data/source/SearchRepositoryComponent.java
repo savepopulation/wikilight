@@ -1,6 +1,7 @@
 package com.raqun.wiki.data.source;
 
 import com.raqun.wiki.ApplicationModule;
+import com.raqun.wiki.api.ApiModule;
 
 import javax.inject.Singleton;
 
@@ -11,7 +12,7 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {SearchRepositoryModule.class, ApplicationModule.class})
+@Component(modules = {SearchRepositoryModule.class, ApplicationModule.class, ApiModule.class})
 public interface SearchRepositoryComponent {
     SearchRepository getSearchRepository();
 }
