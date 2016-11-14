@@ -1,7 +1,7 @@
 package com.raqun.wiki.data.source;
 
 import com.raqun.wiki.ApplicationModule;
-import com.raqun.wiki.api.ApiModule;
+import com.raqun.wiki.data.api.ApiModule;
 
 import javax.inject.Singleton;
 

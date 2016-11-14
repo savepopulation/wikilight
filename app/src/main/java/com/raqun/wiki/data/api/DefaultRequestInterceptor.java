@@ -1,4 +1,4 @@
-package com.raqun.wiki.api;
+package com.raqun.wiki.data.api;
 
 import com.raqun.wiki.utils.Utils;
 

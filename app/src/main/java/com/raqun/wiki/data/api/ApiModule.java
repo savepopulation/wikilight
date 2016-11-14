@@ -1,4 +1,4 @@
-package com.raqun.wiki.api;
+package com.raqun.wiki.data.api;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
