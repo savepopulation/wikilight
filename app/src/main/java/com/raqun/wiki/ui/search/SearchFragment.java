@@ -1,12 +1,17 @@
 package com.raqun.wiki.ui.search;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
+import android.view.View;
+import android.widget.TextView;
 
 import com.raqun.wiki.R;
 import com.raqun.wiki.ui.BaseFragment;
 import com.raqun.wiki.utils.AlertUtils;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by tyln on 21.08.16.
@@ -14,6 +19,9 @@ import com.raqun.wiki.utils.AlertUtils;
 public class SearchFragment extends BaseFragment implements SearchContract.View {
     @NonNull
     private SearchContract.Presenter mPresenter;
+
+    @NonNull
+    private TextView mTextViewResult;
 
     @NonNull
     public static SearchFragment newInstance() {
@@ -26,6 +34,15 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if (view == null) return;
+
+        mTextViewResult = (TextView) view.findViewById(R.id.textview_result);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         mPresenter.subscribe();
@@ -33,14 +50,14 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
     @Override
     public void onPause() {
-        super.onPause();
         mPresenter.unsubscribe();
+        super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         mPresenter.destroy();
+        super.onDestroy();
     }
 
     @Override
@@ -52,5 +69,17 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @Override
     public void onDefaultMessage(@Nullable String message) {
         AlertUtils.alert(getActivity(), message);
+    }
+
+    @UiThread
+    @Override
+    public void showSearchResult(@NonNull String result) {
+        mTextViewResult.setText(result);
+    }
+
+    @UiThread
+    @Override
+    public void emptyResult() {
+        AlertUtils.alert(getActivity().getApplicationContext(),getString(R.string.error_empty_result));
     }
 }

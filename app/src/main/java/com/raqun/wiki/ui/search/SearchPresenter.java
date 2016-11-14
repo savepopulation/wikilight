@@ -54,7 +54,7 @@ class SearchPresenter implements SearchContract.Presenter {
                 .subscribe(new Observer<Page>() {
                     @Override
                     public void onCompleted() {
-                        // Completed
+                        // Subscription Completed
                     }
 
                     @Override
@@ -64,7 +64,12 @@ class SearchPresenter implements SearchContract.Presenter {
 
                     @Override
                     public void onNext(Page page) {
-                        mView.onDefaultMessage(page.getContent());
+                        final String content = page.getContent();
+                        if (TextUtils.isEmpty(content)) {
+                            mView.emptyResult();
+                            return;
+                        }
+                        mView.showSearchResult(content);
                     }
                 });
 

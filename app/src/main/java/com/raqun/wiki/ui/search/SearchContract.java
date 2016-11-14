@@ -11,6 +11,9 @@ import com.raqun.wiki.ui.BaseView;
  */
 public interface SearchContract {
     interface View extends BaseView<Presenter> {
+        void showSearchResult(@NonNull String result);
+
+        void emptyResult();
     }
 
     interface Presenter extends BasePresenter {
