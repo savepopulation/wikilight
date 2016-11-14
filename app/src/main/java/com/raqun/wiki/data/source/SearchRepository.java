@@ -41,7 +41,7 @@ public class SearchRepository implements SearchDataSource {
     private LinkedHashMap<String, Page> mResultCache;
 
     @Inject
-    public SearchRepository(@NonNull @Remote SearchRemoteDataSource searchRemoteDataSource, @NonNull @Local SearchLocalDataSource searchLocalDataSource) {
+    SearchRepository(@NonNull @Remote SearchRemoteDataSource searchRemoteDataSource, @NonNull @Local SearchLocalDataSource searchLocalDataSource) {
         this.mSearchRemoteDataSource = searchRemoteDataSource;
         this.mSearchLocalDataSource = searchLocalDataSource;
     }

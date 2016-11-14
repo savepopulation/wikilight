@@ -25,14 +25,14 @@ public class SearchRepositoryModule {
     @Singleton
     @Provides
     @Remote
-    public SearchRemoteDataSource provideQueryRemoteDataSource(@NonNull WikiServices wikiServices) {
+    SearchRemoteDataSource provideQueryRemoteDataSource(@NonNull WikiServices wikiServices) {
         return new SearchRemoteDataSource(wikiServices);
     }
 
     @Singleton
     @Provides
     @Local
-    public SearchLocalDataSource proideQueryLocalDataSource(@NonNull Context context) {
+    SearchLocalDataSource proideQueryLocalDataSource(@NonNull Context context) {
         return new SearchLocalDataSource(context);
     }
 }

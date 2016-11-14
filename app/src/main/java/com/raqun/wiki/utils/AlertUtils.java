@@ -13,10 +13,14 @@ import android.widget.Toast;
  */
 public final class AlertUtils {
     private AlertUtils() {
-
+        // Empty Constructor
     }
 
     public static void alert(@NonNull final Context context, @Nullable final String mesage) {
+        if (context == null || TextUtils.isEmpty(mesage)) {
+            return;
+        }
+
         Toast.makeText(context, mesage, Toast.LENGTH_SHORT).show();
     }
 

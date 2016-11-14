@@ -20,7 +20,6 @@ public class WikiApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         mSearcRepositoryComponent = DaggerSearchRepositoryComponent.builder()
                 .applicationModule(new ApplicationModule((this)))
                 .searchRepositoryModule(new SearchRepositoryModule())

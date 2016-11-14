@@ -11,7 +11,7 @@ import com.raqun.wiki.Constants;
  */
 public final class Utils {
     private Utils() {
-
+        // Empty Constructor
     }
 
     @NonNull

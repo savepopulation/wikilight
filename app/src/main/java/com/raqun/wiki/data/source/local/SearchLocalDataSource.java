@@ -2,6 +2,7 @@ package com.raqun.wiki.data.source.local;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 
 import com.raqun.wiki.data.Page;
@@ -32,6 +33,7 @@ public class SearchLocalDataSource implements SearchDataSource {
     @NonNull
     private Context mContext;
 
+    @NonNull
     private RealmConfiguration mRealmConfiguration;
 
     public SearchLocalDataSource(@NonNull Context context) {
@@ -49,7 +51,9 @@ public class SearchLocalDataSource implements SearchDataSource {
                         .equalTo("query", query)
                         .findFirst();
                 if (page != null && page.isLoaded() && page.isValid()) {
-                    Log.i("data from", "realm");
+                    if (BuildConfig.DEBUG) {
+                        Log.i("data from", "realm");
+                    }
                     subscriber.onNext(realm.copyFromRealm(page));
                 } else {
                     Observable.empty();
@@ -64,6 +68,7 @@ public class SearchLocalDataSource implements SearchDataSource {
     public void save(@NonNull String query, @NonNull Page page) {
         final Realm realm = Realm.getInstance(mRealmConfiguration);
         realm.beginTransaction();
+
         final Page realmPage = realm.createObject(Page.class);
         realmPage.setQuery(query);
         realmPage.setId(page.getId());

@@ -32,25 +32,25 @@ public final class ApiModule {
 
     @Provides
     @Singleton
-    public String provideBaseUrl() {
+    String provideBaseUrl() {
         return BASE_URL;
     }
 
     @Provides
     @Singleton
-    public OkHttpClient provideOkHttpClient(@NonNull Interceptor interceptor) {
+    OkHttpClient provideOkHttpClient(@NonNull Interceptor interceptor) {
         return createApiClient(interceptor).build();
     }
 
     @Provides
     @Singleton
-    public WikiServices provideWikiServices(@NonNull Retrofit retrofit) {
+    WikiServices provideWikiServices(@NonNull Retrofit retrofit) {
         return retrofit.create(WikiServices.class);
     }
 
     @Provides
     @Singleton
-    public Retrofit provideRetrofit(@NonNull String baseUrl, @NonNull OkHttpClient okHttpClient) {
+    Retrofit provideRetrofit(@NonNull String baseUrl, @NonNull OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -61,11 +61,11 @@ public final class ApiModule {
 
     @Provides
     @Singleton
-    public Interceptor provideDefaultRequestInterceptor() {
+    Interceptor provideDefaultRequestInterceptor() {
         return new DefaultRequestInterceptor();
     }
 
-    public static OkHttpClient.Builder createApiClient(@Nullable Interceptor requestInterceptor) {
+    static OkHttpClient.Builder createApiClient(@Nullable Interceptor requestInterceptor) {
         final OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
         if (BuildConfig.DEBUG) {
             final HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
