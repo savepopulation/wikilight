@@ -21,6 +21,7 @@ public class SearchActivity extends BaseActivity {
     @Inject
     String mQuery;
 
+    @NonNull
     public static Intent newIntent(@NonNull Context context, @NonNull String query) {
         final Intent intent = new Intent(context, SearchActivity.class);
         intent.putExtra(BUNDLE_QUERY, query);

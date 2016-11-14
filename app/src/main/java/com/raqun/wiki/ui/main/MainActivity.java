@@ -20,9 +20,11 @@ import javax.inject.Inject;
  * Created by tyln on 19.09.16.
  */
 public class MainActivity extends BaseActivity {
+    @NonNull
     @Inject
     MainPresenter mMainPresnter;
 
+    @NonNull
     public static Intent newIntent(@NonNull Context context) {
         return new Intent(context, MainActivity.class);
     }
@@ -40,7 +42,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_main);
         if (mainFragment == null) {
             mainFragment = MainFragment.newInstance();

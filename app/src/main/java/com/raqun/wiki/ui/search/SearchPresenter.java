@@ -23,9 +23,9 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * Created by tyln on 21.08.16.
  */
-public class SearchPresenter implements SearchContract.Presenter {
-    @NonNull
-    private final SearchContract.View mView;
+class SearchPresenter implements SearchContract.Presenter {
+    @Nullable
+    private SearchContract.View mView;
 
     @NonNull
     private final SearchRepository mSearchRepository;
@@ -79,5 +79,10 @@ public class SearchPresenter implements SearchContract.Presenter {
     @Override
     public void unsubscribe() {
         mCompositeSubscription.clear();
+    }
+
+    @Override
+    public void destroy() {
+        this.mView = null;
     }
 }

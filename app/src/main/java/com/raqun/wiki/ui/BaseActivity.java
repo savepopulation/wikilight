@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.MenuRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -37,6 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @UiThread
     protected final void setActionbarTitle(@Nullable CharSequence title) {
         if (!TextUtils.isEmpty(title)) {
             final ActionBar actionBar = getSupportActionBar();

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
  * Created by tyln on 21.08.16.
  */
 public abstract class BaseFragment extends Fragment {
-
     @LayoutRes
     protected abstract int getLayoutRes();
 

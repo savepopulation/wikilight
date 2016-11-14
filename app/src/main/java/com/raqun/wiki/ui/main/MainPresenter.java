@@ -1,15 +1,16 @@
 package com.raqun.wiki.ui.main;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import javax.inject.Inject;
 
 /**
  * Created by tyln on 19.09.16.
  */
-public class MainPresenter implements MainContract.Presenter {
-    @NonNull
-    private final MainContract.View mView;
+class MainPresenter implements MainContract.Presenter {
+    @Nullable
+    private MainContract.View mView;
 
     @Inject
     MainPresenter(@NonNull MainContract.View view) {
@@ -26,5 +27,10 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void unsubscribe() {
 
+    }
+
+    @Override
+    public void destroy() {
+        this.mView = null;
     }
 }
