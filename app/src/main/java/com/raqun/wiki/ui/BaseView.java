@@ -8,5 +8,5 @@ import android.support.annotation.Nullable;
 public interface BaseView<T extends BasePresenter> {
     void setPresenter(T presenter);
 
-    void onDefaultMessage(@Nullable String message);
+    void alert(@Nullable String message);
 }

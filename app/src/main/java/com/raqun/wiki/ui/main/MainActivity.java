@@ -19,7 +19,7 @@ import javax.inject.Inject;
 /**
  * Created by tyln on 19.09.16.
  */
-public class MainActivity extends BaseActivity {
+public final class MainActivity extends BaseActivity {
     @NonNull
     @Inject
     MainPresenter mMainPresnter;

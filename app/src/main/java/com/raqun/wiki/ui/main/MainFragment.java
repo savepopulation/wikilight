@@ -38,7 +38,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     @UiThread
     @Override
-    public void onDefaultMessage(@Nullable String message) {
+    public void alert(@Nullable String message) {
         AlertUtils.alert(getActivity().getApplicationContext(), message);
     }
 }

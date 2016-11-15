@@ -67,8 +67,8 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
     @UiThread
     @Override
-    public void onDefaultMessage(@Nullable String message) {
-        AlertUtils.alert(getActivity(), message);
+    public void alert(@Nullable String message) {
+        AlertUtils.alert(getActivity().getApplicationContext(), message);
     }
 
     @UiThread
@@ -80,6 +80,6 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @UiThread
     @Override
     public void emptyResult() {
-        AlertUtils.alert(getActivity().getApplicationContext(),getString(R.string.error_empty_result));
+        AlertUtils.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_result));
     }
 }

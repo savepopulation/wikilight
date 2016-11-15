@@ -30,7 +30,7 @@ import rx.schedulers.Schedulers;
  */
 
 @Singleton
-public class SearchRepository implements SearchDataSource {
+public final class SearchRepository implements SearchDataSource {
     @NonNull
     private final SearchRemoteDataSource mSearchRemoteDataSource;
 
