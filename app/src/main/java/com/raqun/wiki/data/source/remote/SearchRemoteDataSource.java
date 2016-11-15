@@ -1,6 +1,7 @@
 package com.raqun.wiki.data.source.remote;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.WorkerThread;
 import android.support.compat.BuildConfig;
 import android.util.Log;
 
@@ -21,7 +22,7 @@ import rx.functions.Func1;
  */
 
 @Singleton
-public class SearchRemoteDataSource implements SearchDataSource {
+public final class SearchRemoteDataSource implements SearchDataSource {
     @NonNull
     private final WikiServices mWikiServices;
 
@@ -29,6 +30,7 @@ public class SearchRemoteDataSource implements SearchDataSource {
         this.mWikiServices = wikiServices;
     }
 
+    @WorkerThread
     @Override
     public Observable<Page> search(@NonNull String query) {
         return mWikiServices.search(query).flatMap(new Func1<Result, Observable<Page>>() {

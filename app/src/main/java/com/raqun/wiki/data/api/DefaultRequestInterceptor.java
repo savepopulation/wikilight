@@ -11,7 +11,7 @@ import okhttp3.Response;
 /**
  * Created by tyln on 1.09.16.
  */
-public class DefaultRequestInterceptor implements Interceptor {
+final class DefaultRequestInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         final Request request = chain.request().newBuilder()

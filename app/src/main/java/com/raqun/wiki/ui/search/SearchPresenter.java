@@ -3,6 +3,7 @@ package com.raqun.wiki.ui.search;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.Query;
@@ -47,19 +48,23 @@ class SearchPresenter implements SearchContract.Presenter {
     }
 
     private void search() {
+        if (TextUtils.isEmpty(mQuery)) {
+            return;
+        }
+
         mCompositeSubscription.clear();
-        final Subscription subscription = mSearchRepository.search(this.mQuery)
+        final Subscription subscription = mSearchRepository.search(mQuery)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Page>() {
                     @Override
                     public void onCompleted() {
-                        // Subscription Completed
+                        Log.i("Search Copmpleted", mQuery);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        mView.onDefaultMessage(e.getMessage());
+                        mView.alert(e.getMessage());
                     }
 
                     @Override

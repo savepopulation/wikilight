@@ -12,12 +12,14 @@ import com.raqun.wiki.ui.BaseActivity;
 
 import javax.inject.Inject;
 
-public class SearchActivity extends BaseActivity {
+public final class SearchActivity extends BaseActivity {
     private static final String BUNDLE_QUERY = "query";
 
+    @NonNull
     @Inject
     SearchPresenter mSearchPresenter;
 
+    @Nullable
     @Inject
     String mQuery;
 

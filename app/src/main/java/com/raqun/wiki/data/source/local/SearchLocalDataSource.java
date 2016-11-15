@@ -2,6 +2,7 @@ package com.raqun.wiki.data.source.local;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.WorkerThread;
 import android.support.compat.BuildConfig;
 import android.util.Log;
 
@@ -29,7 +30,7 @@ import rx.schedulers.Schedulers;
  */
 
 @Singleton
-public class SearchLocalDataSource implements SearchDataSource {
+public final class SearchLocalDataSource implements SearchDataSource {
     @NonNull
     private Context mContext;
 
@@ -41,6 +42,7 @@ public class SearchLocalDataSource implements SearchDataSource {
         this.mRealmConfiguration = new RealmConfiguration.Builder(mContext).build();
     }
 
+    @WorkerThread
     @Override
     public Observable<Page> search(@NonNull final String query) {
         return Observable.create(new Observable.OnSubscribe<Page>() {
@@ -64,6 +66,7 @@ public class SearchLocalDataSource implements SearchDataSource {
         });
     }
 
+    @WorkerThread
     @Override
     public void save(@NonNull String query, @NonNull Page page) {
         final Realm realm = Realm.getInstance(mRealmConfiguration);
