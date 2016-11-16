@@ -2,13 +2,17 @@ package com.raqun.wiki.data.source.local;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
 import android.support.compat.BuildConfig;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.source.SearchDataSource;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import javax.inject.Singleton;
@@ -53,9 +57,6 @@ public final class SearchLocalDataSource implements SearchDataSource {
                         .equalTo("query", query)
                         .findFirst();
                 if (page != null && page.isLoaded() && page.isValid()) {
-                    if (BuildConfig.DEBUG) {
-                        Log.i("data from", "realm");
-                    }
                     subscriber.onNext(realm.copyFromRealm(page));
                 } else {
                     Observable.empty();
@@ -80,5 +81,30 @@ public final class SearchLocalDataSource implements SearchDataSource {
         realm.copyToRealmOrUpdate(realmPage);
         realm.commitTransaction();
         realm.close();
+    }
+
+    @WorkerThread
+    @Override
+    public Observable<List<Page>> searchHistory(@Nullable final String query) {
+        return Observable.create(new Observable.OnSubscribe<List<Page>>() {
+            @Override
+            public void call(Subscriber<? super List<Page>> subscriber) {
+                if (TextUtils.isEmpty(query)) {
+                    subscriber.onNext(getAllHistoryQueries());
+                }
+            }
+        });
+    }
+
+    @WorkerThread
+    private List<Page> getAllHistoryQueries() {
+        final Realm realm = Realm.getInstance(mRealmConfiguration);
+        realm.beginTransaction();
+
+        final RealmResults<Page> realmResults = realm.where(Page.class).findAll();
+        final List<Page> result = realm.copyFromRealm(realmResults);
+        realm.commitTransaction();
+        realm.close();
+        return result;
     }
 }

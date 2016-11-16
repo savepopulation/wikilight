@@ -7,6 +7,8 @@ import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.Query;
 import com.raqun.wiki.data.Result;
 
+import java.util.List;
+
 import rx.Observable;
 
 /**
@@ -16,4 +18,6 @@ public interface SearchDataSource {
     Observable<Page> search(@NonNull String query);
 
     void save(@NonNull String query, @NonNull Page page);
+
+    Observable<List<Page>> searchHistory(@Nullable String query);
 }

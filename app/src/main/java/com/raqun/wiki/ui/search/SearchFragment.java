@@ -7,6 +7,7 @@ import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.TextView;
 
+import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
 import com.raqun.wiki.ui.BaseFragment;
 import com.raqun.wiki.utils.AlertUtils;
@@ -31,6 +32,11 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_search;
+    }
+
+    @Override
+    protected int getMenuRes() {
+        return Constants.NO_RES;
     }
 
     @Override

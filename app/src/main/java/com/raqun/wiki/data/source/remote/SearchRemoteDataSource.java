@@ -1,6 +1,7 @@
 package com.raqun.wiki.data.source.remote;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.WorkerThread;
 import android.support.compat.BuildConfig;
 import android.util.Log;
@@ -11,6 +12,7 @@ import com.raqun.wiki.data.Result;
 import com.raqun.wiki.data.source.SearchDataSource;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Singleton;
 
@@ -36,9 +38,6 @@ public final class SearchRemoteDataSource implements SearchDataSource {
         return mWikiServices.search(query).flatMap(new Func1<Result, Observable<Page>>() {
             @Override
             public Observable<Page> call(Result result) {
-                if (BuildConfig.DEBUG) {
-                    Log.i("fetching data from", "remote");
-                }
                 final ArrayList<Page> pages = new ArrayList<>(result.getQuery().getPages().values());
                 return Observable.from(pages).first();
             }
@@ -48,5 +47,11 @@ public final class SearchRemoteDataSource implements SearchDataSource {
     @Override
     public void save(@NonNull String query, @NonNull Page page) {
         // Empty method
+    }
+
+    @Override
+    public Observable<List<Page>> searchHistory(@Nullable String query) {
+        // No Remote source to cache history
+        return Observable.empty();
     }
 }
