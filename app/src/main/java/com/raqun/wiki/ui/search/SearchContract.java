@@ -17,6 +17,6 @@ public interface SearchContract {
     }
 
     interface Presenter extends BasePresenter {
-
+        // Marker
     }
 }

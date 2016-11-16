@@ -9,7 +9,9 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
+import com.raqun.wiki.WikiApplication;
 import com.raqun.wiki.ui.BaseActivity;
 import com.raqun.wiki.ui.search.SearchActivity;
 import com.squareup.haha.perflib.Main;
@@ -36,7 +38,7 @@ public final class MainActivity extends BaseActivity {
 
     @Override
     protected int getMenuRes() {
-        return R.menu.menu_main;
+        return Constants.NO_RES;
     }
 
     @Override
@@ -52,28 +54,8 @@ public final class MainActivity extends BaseActivity {
 
         DaggerMainComponent.builder()
                 .mainPresenterModule(new MainPresenterModule(mainFragment))
+                .searchRepositoryComponent(((WikiApplication) getApplication()).getSearcRepositoryComponent())
                 .build()
                 .inject(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(getMenuRes(), menu);
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setQueryHint(getString(R.string.action_search));
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                startActivity(SearchActivity.newIntent(MainActivity.this, query));
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-        return true;
     }
 }

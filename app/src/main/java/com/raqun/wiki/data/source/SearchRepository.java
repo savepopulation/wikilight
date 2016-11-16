@@ -12,6 +12,7 @@ import com.raqun.wiki.data.source.local.SearchLocalDataSource;
 import com.raqun.wiki.data.source.remote.SearchRemoteDataSource;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.inject.Inject;
@@ -69,7 +70,6 @@ public final class SearchRepository implements SearchDataSource {
                     }
                 });
 
-
         return Observable.concat(localResult, remoteResult)
                 .first()
                 .map(new Func1<Page, Page>() {
@@ -86,6 +86,11 @@ public final class SearchRepository implements SearchDataSource {
     @Override
     public void save(@NonNull String query, @NonNull Page page) {
         // Empty method
+    }
+
+    @Override
+    public Observable<List<Page>> searchHistory(@Nullable String query) {
+        return mSearchLocalDataSource.searchHistory(query);
     }
 
     @Nullable
