@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui;
+package com.raqun.wiki;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

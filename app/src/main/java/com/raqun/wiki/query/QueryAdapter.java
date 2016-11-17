@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.main;
+package com.raqun.wiki.query;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,11 +15,11 @@ import java.util.List;
  * Created by tyln on 16.11.2016.
  */
 
-class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
+class QueryAdapter extends RecyclerView.Adapter<QueryAdapter.ViewHolder> {
     @NonNull
     private final List<String> mQueries;
 
-    public HistoryAdapter(@NonNull List<String> queries) {
+    QueryAdapter(@NonNull List<String> queries) {
         if (queries == null) {
             throw new IllegalArgumentException("List cannot be null");
         }

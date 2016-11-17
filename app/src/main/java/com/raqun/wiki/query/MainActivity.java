@@ -1,20 +1,15 @@
-package com.raqun.wiki.ui.main;
+package com.raqun.wiki.query;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
 import com.raqun.wiki.WikiApplication;
-import com.raqun.wiki.ui.BaseActivity;
-import com.raqun.wiki.ui.search.SearchActivity;
-import com.squareup.haha.perflib.Main;
+import com.raqun.wiki.BaseActivity;
 
 import javax.inject.Inject;
 

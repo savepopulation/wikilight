@@ -12,6 +12,7 @@ import dagger.Provides;
 
 @Module
 public class ApplicationModule {
+    @NonNull
     private final Context mContext;
 
     ApplicationModule(@NonNull Context context) {

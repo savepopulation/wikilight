@@ -1,10 +1,9 @@
-package com.raqun.wiki.ui.main;
+package com.raqun.wiki.query;
 
 import android.support.annotation.NonNull;
 
-import com.raqun.wiki.ui.BasePresenter;
-import com.raqun.wiki.ui.BaseView;
-import com.raqun.wiki.ui.search.SearchContract;
+import com.raqun.wiki.BasePresenter;
+import com.raqun.wiki.BaseView;
 
 import java.util.List;
 

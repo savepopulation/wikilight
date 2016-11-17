@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.search;
+package com.raqun.wiki.search;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -6,12 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.raqun.wiki.data.Page;
-import com.raqun.wiki.data.Query;
-import com.raqun.wiki.data.Result;
 import com.raqun.wiki.data.source.SearchRepository;
-import com.raqun.wiki.ui.BasePresenter;
-
-import java.util.List;
 
 import javax.inject.Inject;
 

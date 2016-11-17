@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.main;
+package com.raqun.wiki.query;
 
 import android.support.annotation.NonNull;
 
@@ -10,7 +10,7 @@ import dagger.Provides;
  */
 
 @Module
-public class MainPresenterModule {
+class MainPresenterModule {
     private final MainContract.View mView;
 
     MainPresenterModule(@NonNull MainContract.View view) {
