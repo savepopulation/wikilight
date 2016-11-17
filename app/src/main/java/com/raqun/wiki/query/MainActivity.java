@@ -37,6 +37,11 @@ public final class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected int getNavigationType() {
+        return NAVIGATION_ROOT;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainFragment mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.framelayout_main);

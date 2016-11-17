@@ -1,5 +1,7 @@
 <resources>
 
+    <!-- Application Styles -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -45,5 +47,45 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Application Styles End -->
+
+    <!-- Component Styles -->
+
+    <style name="TextViewDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:color">@color/primaryTextColor</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:drawablePadding">2dp</item>
+    </style>
+
+    <style name="ClickableTextView" parent="TextViewDefault">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="TextViewTitle" parent="TextViewDefault">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewInformation" parent="TextViewDefault">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:color">@color/secondaryTextColor</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="BaseIndicator" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="WrapperCardViewStyle" parent="CardView.Light">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/default_margin</item>
+    </style>
+
+    <!-- Component Styles End -->
 
 </resources>

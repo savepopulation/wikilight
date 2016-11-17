@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.raqun.wiki.Constants;
@@ -21,6 +22,9 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
     @NonNull
     private TextView mTextViewResult;
+
+    @NonNull
+    private ProgressBar mProgressBarSearch;
 
     @NonNull
     public static SearchFragment newInstance() {
@@ -44,6 +48,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
         if (view == null) return;
 
         mTextViewResult = (TextView) view.findViewById(R.id.textview_result);
+        mProgressBarSearch = (ProgressBar) view.findViewById(R.id.progressbar_search);
     }
 
     @Override
@@ -85,5 +90,15 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @Override
     public void emptyResult() {
         AlertUtils.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_result));
+    }
+
+    @Override
+    public void showSearchIndicator() {
+        mProgressBarSearch.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideSearchIndicator() {
+        mProgressBarSearch.setVisibility(View.GONE);
     }
 }

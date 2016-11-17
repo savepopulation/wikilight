@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -10,9 +9,18 @@
 
         <TextView
             android:id="@+id/textview_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            style="@style/TextViewDefault"
+            android:clipToPadding="true"
+            android:padding="@dimen/default_padding" />
 
     </ScrollView>
 
-</LinearLayout>
+    <ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/progressbar_search"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
