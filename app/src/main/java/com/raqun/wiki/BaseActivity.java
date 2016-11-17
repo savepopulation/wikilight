@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
@@ -18,16 +19,22 @@ import com.raqun.wiki.R;
  * Created by tyln on 21.08.16.
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    protected static final int NAVIGATION_ROOT = 0;
+    protected static final int NAVIGATION_BACK = 1;
+
     @LayoutRes
     protected abstract int getLayoutRes();
 
     @MenuRes
     protected abstract int getMenuRes();
 
+    protected abstract int getNavigationType();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
+        setupActionBar();
     }
 
     @Override
@@ -38,6 +45,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @UiThread
     protected final void setActionbarTitle(@Nullable CharSequence title) {
         if (!TextUtils.isEmpty(title)) {
@@ -45,6 +62,22 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (actionBar != null) {
                 actionBar.setTitle(title);
             }
+        }
+    }
+
+    private void setupActionBar() {
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            switch (getNavigationType()) {
+                case NAVIGATION_BACK:
+                    actionBar.setDisplayHomeAsUpEnabled(true);
+                    break;
+
+                default:
+                    actionBar.setDisplayHomeAsUpEnabled(false);
+                    break;
+            }
+
         }
     }
 }

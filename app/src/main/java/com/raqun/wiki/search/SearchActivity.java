@@ -41,6 +41,11 @@ public final class SearchActivity extends BaseActivity {
     }
 
     @Override
+    protected int getNavigationType() {
+        return NAVIGATION_BACK;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

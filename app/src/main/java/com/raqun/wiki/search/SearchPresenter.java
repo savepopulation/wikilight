@@ -42,6 +42,21 @@ class SearchPresenter implements SearchContract.Presenter {
         mView.setPresenter(this);
     }
 
+    @Override
+    public void subscribe() {
+        search();
+    }
+
+    @Override
+    public void unsubscribe() {
+        mCompositeSubscription.clear();
+    }
+
+    @Override
+    public void destroy() {
+        this.mView = null;
+    }
+
     private void search() {
         if (TextUtils.isEmpty(mQuery)) {
             return;
@@ -64,6 +79,7 @@ class SearchPresenter implements SearchContract.Presenter {
 
                     @Override
                     public void onNext(Page page) {
+                        mView.hideSearchIndicator();
                         final String content = page.getContent();
                         if (TextUtils.isEmpty(content)) {
                             mView.emptyResult();
@@ -73,21 +89,7 @@ class SearchPresenter implements SearchContract.Presenter {
                     }
                 });
 
+        mView.showSearchIndicator();
         mCompositeSubscription.add(subscription);
-    }
-
-    @Override
-    public void subscribe() {
-        search();
-    }
-
-    @Override
-    public void unsubscribe() {
-        mCompositeSubscription.clear();
-    }
-
-    @Override
-    public void destroy() {
-        this.mView = null;
     }
 }

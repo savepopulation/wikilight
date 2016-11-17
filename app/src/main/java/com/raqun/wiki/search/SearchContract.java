@@ -13,6 +13,10 @@ public interface SearchContract {
         void showSearchResult(@NonNull String result);
 
         void emptyResult();
+
+        void showSearchIndicator();
+
+        void hideSearchIndicator();
     }
 
     interface Presenter extends BasePresenter {
