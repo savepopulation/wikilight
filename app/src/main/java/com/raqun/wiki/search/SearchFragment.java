@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.search;
+package com.raqun.wiki.search;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,10 +9,8 @@ import android.widget.TextView;
 
 import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
-import com.raqun.wiki.ui.BaseFragment;
+import com.raqun.wiki.BaseFragment;
 import com.raqun.wiki.utils.AlertUtils;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by tyln on 21.08.16.

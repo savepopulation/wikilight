@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.search;
+package com.raqun.wiki.search;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

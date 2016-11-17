@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.main;
+package com.raqun.wiki.query;
 
 import com.raqun.wiki.data.source.SearchRepositoryComponent;
 import com.raqun.wiki.utils.FragmentScoped;

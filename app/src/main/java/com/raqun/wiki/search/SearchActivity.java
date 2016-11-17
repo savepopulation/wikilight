@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.search;
+package com.raqun.wiki.search;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 
 import com.raqun.wiki.R;
 import com.raqun.wiki.WikiApplication;
-import com.raqun.wiki.ui.BaseActivity;
+import com.raqun.wiki.BaseActivity;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package com.raqun.wiki.ui.main;
+package com.raqun.wiki.query;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,8 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.raqun.wiki.R;
-import com.raqun.wiki.ui.BaseFragment;
-import com.raqun.wiki.ui.search.SearchActivity;
+import com.raqun.wiki.BaseFragment;
+import com.raqun.wiki.search.SearchActivity;
 import com.raqun.wiki.utils.AlertUtils;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     private RecyclerView mRecyclerViewHistory;
 
     @Nullable
-    private HistoryAdapter mHistoryAdapter;
+    private QueryAdapter mQueryAdapter;
 
     @NonNull
     public static MainFragment newInstance() {
@@ -119,13 +119,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @UiThread
     @Override
     public void initHistory(@NonNull List<String> queries) {
-        mHistoryAdapter = new HistoryAdapter(queries);
-        mRecyclerViewHistory.setAdapter(mHistoryAdapter);
+        mQueryAdapter = new QueryAdapter(queries);
+        mRecyclerViewHistory.setAdapter(mQueryAdapter);
     }
 
     @UiThread
     @Override
     public void notifyHistoryChange() {
-        mHistoryAdapter.notifyDataSetChanged();
+        mQueryAdapter.notifyDataSetChanged();
     }
 }

@@ -1,9 +1,7 @@
-package com.raqun.wiki.ui.search;
+package com.raqun.wiki.search;
 
 import com.raqun.wiki.data.source.SearchRepositoryComponent;
 import com.raqun.wiki.utils.FragmentScoped;
-
-import javax.inject.Inject;
 
 import dagger.Component;
 

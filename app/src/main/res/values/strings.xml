@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">wiki</string>
+    <string name="app_name">WikiLight</string>
 
     <!-- Actions -->
     <string name="action_search">Search</string>
