@@ -44,9 +44,6 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        if (view == null) return;
-
         mTextViewResult = (TextView) view.findViewById(R.id.textview_result);
         mProgressBarSearch = (ProgressBar) view.findViewById(R.id.progressbar_search);
     }
