@@ -24,6 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public final class ApiModule {
+    @Nullable
     private static final String BASE_URL = BuildConfig.BASE_URL;
 
     public ApiModule() {
@@ -65,7 +66,8 @@ public final class ApiModule {
         return new DefaultRequestInterceptor();
     }
 
-    static OkHttpClient.Builder createApiClient(@Nullable Interceptor requestInterceptor) {
+    @NonNull
+    private static OkHttpClient.Builder createApiClient(@Nullable Interceptor requestInterceptor) {
         final OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
         if (BuildConfig.DEBUG) {
             final HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

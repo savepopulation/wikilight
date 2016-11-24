@@ -49,14 +49,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        if (view == null) return;
-
         mRecyclerViewHistory = (RecyclerView) view.findViewById(R.id.recyclerview_history);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerViewHistory.setLayoutManager(linearLayoutManager);
-        //mRecyclerViewHistory.addItemDecoration(new DividerDecorator(getActivity()));
         mRecyclerViewHistory.setHasFixedSize(true);
     }
 
