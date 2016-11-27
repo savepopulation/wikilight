@@ -2,10 +2,14 @@ package com.raqun.wiki.query;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.text.TextUtilsCompat;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.source.SearchRepository;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +75,16 @@ class MainPresenter implements MainContract.Presenter {
     public void searchHistory(@NonNull String query) {
         this.mQuery = query;
         searchHistory();
+    }
+
+    @Override
+    public void search(@NonNull String query) {
+        if (TextUtils.isEmpty(query)) {
+            mView.onInvalidQuery();
+            return;
+        }
+
+        mView.navigateToSearchResult(query);
     }
 
     private void searchHistory() {

@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by tyln on 19.09.16.
  */
-public class MainFragment extends BaseFragment implements MainContract.View {
+public class MainFragment extends BaseFragment implements MainContract.View, QueryAdapter.OnItemClickListener {
     @NonNull
     private MainContract.Presenter mPresenter;
 
@@ -89,7 +89,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                startActivity(SearchActivity.newIntent(getActivity(), query));
+                mPresenter.search(query);
                 return false;
             }
 
@@ -115,7 +115,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @UiThread
     @Override
     public void initHistory(@NonNull List<String> queries) {
-        mQueryAdapter = new QueryAdapter(queries);
+        mQueryAdapter = new QueryAdapter(queries, this);
         mRecyclerViewHistory.setAdapter(mQueryAdapter);
     }
 
@@ -123,5 +123,20 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @Override
     public void notifyHistoryChange() {
         mQueryAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void navigateToSearchResult(@NonNull String query) {
+        startActivity(SearchActivity.newIntent(getActivity(), query));
+    }
+
+    @Override
+    public void onInvalidQuery() {
+        AlertUtils.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_query));
+    }
+
+    @Override
+    public void onItemClicked(@Nullable String query) {
+        mPresenter.search(query);
     }
 }
