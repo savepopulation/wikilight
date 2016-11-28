@@ -15,6 +15,7 @@ import com.raqun.wiki.R;
 import com.raqun.wiki.BaseFragment;
 import com.raqun.wiki.search.SearchActivity;
 import com.raqun.wiki.utils.AlertUtils;
+import com.raqun.wiki.utils.DividerDecorator;
 
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Que
         mRecyclerViewHistory = (RecyclerView) view.findViewById(R.id.recyclerview_history);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerViewHistory.addItemDecoration(new DividerDecorator(getActivity()));
         mRecyclerViewHistory.setLayoutManager(linearLayoutManager);
         mRecyclerViewHistory.setHasFixedSize(true);
     }
