@@ -6,6 +6,7 @@ import android.support.annotation.WorkerThread;
 import android.support.compat.BuildConfig;
 import android.util.Log;
 
+import com.raqun.wiki.data.HistoryItem;
 import com.raqun.wiki.data.api.WikiServices;
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.Result;
@@ -32,7 +33,6 @@ public final class SearchRemoteDataSource implements SearchDataSource {
         this.mWikiServices = wikiServices;
     }
 
-    @WorkerThread
     @Override
     public Observable<Page> search(@NonNull String query) {
         return mWikiServices.search(query).flatMap(new Func1<Result, Observable<Page>>() {
@@ -50,7 +50,7 @@ public final class SearchRemoteDataSource implements SearchDataSource {
     }
 
     @Override
-    public Observable<List<Page>> searchHistory(@Nullable String query) {
+    public Observable<List<HistoryItem>> searchHistory(@Nullable String query) {
         // No Remote source to cache history
         return Observable.empty();
     }

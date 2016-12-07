@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
 import com.raqun.wiki.BaseFragment;
-import com.raqun.wiki.utils.AlertUtils;
+import com.raqun.wiki.utils.AlertUtil;
 
 /**
  * Created by tyln on 21.08.16.
@@ -74,7 +74,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @UiThread
     @Override
     public void alert(@Nullable String message) {
-        AlertUtils.alert(getActivity().getApplicationContext(), message);
+        AlertUtil.alert(getActivity().getApplicationContext(), message);
     }
 
     @UiThread
@@ -86,7 +86,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @UiThread
     @Override
     public void emptyResult() {
-        AlertUtils.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_result));
+        AlertUtil.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_result));
     }
 
     @Override

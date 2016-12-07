@@ -1,7 +1,5 @@
 package com.raqun.wiki.data.api;
 
-import com.raqun.wiki.utils.Utils;
-
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -15,7 +13,7 @@ final class DefaultRequestInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         final Request request = chain.request().newBuilder()
-                .addHeader("User-Agent", Utils.generateUserAgentForWikiApi())
+                .addHeader("User-Agent", ApiModule.generateUserAgentForWikiApi())
                 .build();
         return chain.proceed(request);
     }

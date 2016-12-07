@@ -11,8 +11,8 @@ import android.widget.Toast;
 /**
  * Created by tyln on 21.08.16.
  */
-public final class AlertUtils {
-    private AlertUtils() {
+public final class AlertUtil {
+    private AlertUtil() {
         // Empty Constructor
     }
 

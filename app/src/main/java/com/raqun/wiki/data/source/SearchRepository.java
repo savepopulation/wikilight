@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.raqun.wiki.data.HistoryItem;
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.Query;
 import com.raqun.wiki.data.Result;
@@ -89,7 +90,7 @@ public final class SearchRepository implements SearchDataSource {
     }
 
     @Override
-    public Observable<List<Page>> searchHistory(@Nullable String query) {
+    public Observable<List<HistoryItem>> searchHistory(@Nullable String query) {
         return mSearchLocalDataSource.searchHistory(query);
     }
 

@@ -69,7 +69,6 @@
     </style>
 
     <style name="TextViewInformation" parent="TextViewDefault">
-        <item name="android:layout_width">0dp</item>
         <item name="android:color">@color/secondaryTextColor</item>
         <item name="android:textSize">@dimen/small_text_size</item>
     </style>

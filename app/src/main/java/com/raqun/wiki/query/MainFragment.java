@@ -13,8 +13,9 @@ import android.view.View;
 
 import com.raqun.wiki.R;
 import com.raqun.wiki.BaseFragment;
+import com.raqun.wiki.data.HistoryItem;
 import com.raqun.wiki.search.SearchActivity;
-import com.raqun.wiki.utils.AlertUtils;
+import com.raqun.wiki.utils.AlertUtil;
 import com.raqun.wiki.utils.DividerDecorator;
 
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * Created by tyln on 19.09.16.
  */
-public class MainFragment extends BaseFragment implements MainContract.View, QueryAdapter.OnItemClickListener {
+public class MainFragment extends BaseFragment implements MainContract.View, HistoryAdapter.OnItemClickListener {
     @NonNull
     private MainContract.Presenter mPresenter;
 
@@ -30,7 +31,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Que
     private RecyclerView mRecyclerViewHistory;
 
     @Nullable
-    private QueryAdapter mQueryAdapter;
+    private HistoryAdapter mHistoryAdapter;
 
     @NonNull
     public static MainFragment newInstance() {
@@ -111,20 +112,20 @@ public class MainFragment extends BaseFragment implements MainContract.View, Que
     @UiThread
     @Override
     public void alert(@Nullable String message) {
-        AlertUtils.alert(getActivity().getApplicationContext(), message);
+        AlertUtil.alert(getActivity().getApplicationContext(), message);
     }
 
     @UiThread
     @Override
-    public void initHistory(@NonNull List<String> queries) {
-        mQueryAdapter = new QueryAdapter(queries, this);
-        mRecyclerViewHistory.setAdapter(mQueryAdapter);
+    public void initHistory(@NonNull List<HistoryItem> historyItems) {
+        mHistoryAdapter = new HistoryAdapter(historyItems, this);
+        mRecyclerViewHistory.setAdapter(mHistoryAdapter);
     }
 
     @UiThread
     @Override
     public void notifyHistoryChange() {
-        mQueryAdapter.notifyDataSetChanged();
+        mHistoryAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -134,7 +135,7 @@ public class MainFragment extends BaseFragment implements MainContract.View, Que
 
     @Override
     public void onInvalidQuery() {
-        AlertUtils.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_query));
+        AlertUtil.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_query));
     }
 
     @Override

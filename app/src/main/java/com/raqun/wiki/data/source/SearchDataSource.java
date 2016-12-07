@@ -3,9 +3,8 @@ package com.raqun.wiki.data.source;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.raqun.wiki.data.HistoryItem;
 import com.raqun.wiki.data.Page;
-import com.raqun.wiki.data.Query;
-import com.raqun.wiki.data.Result;
 
 import java.util.List;
 
@@ -19,5 +18,5 @@ public interface SearchDataSource {
 
     void save(@NonNull String query, @NonNull Page page);
 
-    Observable<List<Page>> searchHistory(@Nullable String query);
+    Observable<List<HistoryItem>> searchHistory(@Nullable String query);
 }

@@ -78,4 +78,18 @@ public final class ApiModule {
         okHttpClientBuilder.addInterceptor(requestInterceptor);
         return okHttpClientBuilder;
     }
+
+    @NonNull
+    static String generateUserAgentForWikiApi() {
+        final StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(com.raqun.wiki.Constants.APP_NAME);
+        stringBuilder.append("/");
+        stringBuilder.append(BuildConfig.VERSION_NAME);
+        stringBuilder.append(" (");
+        stringBuilder.append(com.raqun.wiki.Constants.GITHUB_URL);
+        stringBuilder.append("/;");
+        stringBuilder.append(com.raqun.wiki.Constants.AUTHOR_EMAIL);
+        stringBuilder.append(") Android");
+        return stringBuilder.toString();
+    }
 }

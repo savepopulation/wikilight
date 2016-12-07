@@ -8,6 +8,14 @@
 
     <TextView
         android:id="@+id/textview_query"
-        style="@style/TextViewDefault" />
+        style="@style/TextViewTitle"
+        android:textStyle="normal"
+        android:maxLines="1"/>
+
+    <TextView
+        android:id="@+id/textview_date"
+        style="@style/TextViewInformation"
+        android:drawableLeft="@mipmap/ic_access_time_grey600_18dp"
+        android:layout_marginTop="2dp"/>
 
 </LinearLayout>

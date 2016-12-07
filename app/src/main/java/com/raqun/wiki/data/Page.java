@@ -17,6 +17,7 @@ public class Page extends RealmObject {
     private String title;
     @SerializedName("extract")
     private String content;
+    private long createDate;
 
     public Page() {
     }
@@ -57,5 +58,13 @@ public class Page extends RealmObject {
 
     public void setQuery(String query) {
         this.query = query;
+    }
+
+    public long getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(long createDate) {
+        this.createDate = createDate;
     }
 }

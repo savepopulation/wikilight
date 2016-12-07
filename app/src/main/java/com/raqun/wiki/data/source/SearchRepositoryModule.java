@@ -18,7 +18,7 @@ import dagger.Provides;
 @Module
 public class SearchRepositoryModule {
     public SearchRepositoryModule() {
-
+        // Empty Constructor
     }
 
     @Singleton

@@ -6,6 +6,7 @@ import android.support.annotation.StringDef;
 
 import com.raqun.wiki.BasePresenter;
 import com.raqun.wiki.BaseView;
+import com.raqun.wiki.data.HistoryItem;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 interface MainContract {
     interface View extends BaseView<Presenter> {
-        void initHistory(@NonNull List<String> queries);
+        void initHistory(@NonNull List<HistoryItem> historyItems);
 
         void notifyHistoryChange();
 
