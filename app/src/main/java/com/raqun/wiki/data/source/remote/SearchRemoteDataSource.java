@@ -50,7 +50,7 @@ public final class SearchRemoteDataSource implements SearchDataSource {
     }
 
     @Override
-    public Observable<List<HistoryItem>> searchHistory(@Nullable String query) {
+    public Observable<HistoryItem> searchHistory(@Nullable String query) {
         // No Remote source to cache history
         return Observable.empty();
     }

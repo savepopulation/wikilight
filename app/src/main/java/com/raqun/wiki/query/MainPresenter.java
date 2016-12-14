@@ -87,13 +87,14 @@ class MainPresenter implements MainContract.Presenter {
 
     private void searchHistory() {
         mCompositeSubscription.clear();
+        mHistoryItems.clear();
         final Subscription subscription = mSearchRepository.searchHistory(mQuery)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<HistoryItem>>() {
+                .subscribe(new Observer<HistoryItem>() {
                     @Override
                     public void onCompleted() {
-                        Log.i("Search HistoryItem", "completed");
+                        mView.notifyHistoryChange();
                     }
 
                     @Override
@@ -102,12 +103,8 @@ class MainPresenter implements MainContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(List<HistoryItem> items) {
-                        mHistoryItems.clear();
-                        for (HistoryItem item : items) {
-                            mHistoryItems.add(item);
-                        }
-                        mView.notifyHistoryChange();
+                    public void onNext(HistoryItem item) {
+                        mHistoryItems.add(item);
                     }
                 });
         mCompositeSubscription.add(subscription);

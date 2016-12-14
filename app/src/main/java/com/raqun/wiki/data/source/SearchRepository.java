@@ -90,7 +90,7 @@ public final class SearchRepository implements SearchDataSource {
     }
 
     @Override
-    public Observable<List<HistoryItem>> searchHistory(@Nullable String query) {
+    public Observable<HistoryItem> searchHistory(@Nullable String query) {
         return mSearchLocalDataSource.searchHistory(query);
     }
 

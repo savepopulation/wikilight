@@ -11,6 +11,7 @@ import com.raqun.wiki.data.source.SearchDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Future;
 
 import javax.inject.Singleton;
 
@@ -20,6 +21,7 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func1;
 
 /**
  * Created by tyln on 16.08.16.
@@ -78,17 +80,22 @@ public final class SearchLocalDataSource implements SearchDataSource {
     }
 
     @Override
-    public Observable<List<HistoryItem>> searchHistory(@Nullable final String query) {
-        return Observable.create(new Observable.OnSubscribe<List<HistoryItem>>() {
+    public Observable<HistoryItem> searchHistory(@Nullable final String query) {
+        return Observable.from(getAllHistoryQueries()).filter(new Func1<Page, Boolean>() {
             @Override
-            public void call(Subscriber<? super List<HistoryItem>> subscriber) {
-                subscriber.onNext(getAllHistoryQueries());
+            public Boolean call(Page page) {
+                return page.getQuery().contains(query);
+            }
+        }).map(new Func1<Page, HistoryItem>() {
+            @Override
+            public HistoryItem call(Page page) {
+                return new HistoryItem(page.getQuery(), page.getCreateDate());
             }
         });
     }
 
     @WorkerThread
-    private List<HistoryItem> getAllHistoryQueries() {
+    private List<Page> getAllHistoryQueries() {
         final Realm realm = Realm.getInstance(mRealmConfiguration);
         realm.beginTransaction();
 
@@ -99,11 +106,6 @@ public final class SearchLocalDataSource implements SearchDataSource {
         realm.commitTransaction();
         realm.close();
 
-        final List<HistoryItem> histories = new ArrayList<>();
-        for (Page page : pages) {
-            histories.add(new HistoryItem(page.getQuery(), page.getCreateDate()));
-        }
-
-        return histories;
+        return pages;
     }
 }

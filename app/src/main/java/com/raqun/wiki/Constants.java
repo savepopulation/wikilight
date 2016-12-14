@@ -5,14 +5,11 @@ package com.raqun.wiki;
  */
 public final class Constants {
     private Constants() {
-        // Empty private Constructor
+        // Empty Private Constructor
     }
 
     // RES
     public static final int NO_RES = 0;
-
-    // SDF
-
 
     // META DATA
     public static final String APP_NAME = "WikiLight";
