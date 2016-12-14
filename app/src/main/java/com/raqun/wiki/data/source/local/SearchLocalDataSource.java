@@ -79,14 +79,16 @@ public final class SearchLocalDataSource implements SearchDataSource {
         realm.close();
     }
 
+    @Nullable
     @Override
     public Observable<HistoryItem> searchHistory(@Nullable final String query) {
-        return Observable.from(getAllHistoryQueries()).filter(new Func1<Page, Boolean>() {
-            @Override
-            public Boolean call(Page page) {
-                return page.getQuery().contains(query);
-            }
-        }).map(new Func1<Page, HistoryItem>() {
+        // Not implemented
+        return null;
+    }
+
+    @Override
+    public Observable<HistoryItem> getAllQueryHistory() {
+        return Observable.from(getAllHistoryQueries()).map(new Func1<Page, HistoryItem>() {
             @Override
             public HistoryItem call(Page page) {
                 return new HistoryItem(page.getQuery(), page.getCreateDate());

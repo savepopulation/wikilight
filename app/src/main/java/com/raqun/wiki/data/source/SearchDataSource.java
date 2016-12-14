@@ -19,4 +19,6 @@ public interface SearchDataSource {
     void save(@NonNull String query, @NonNull Page page);
 
     Observable<HistoryItem> searchHistory(@Nullable String query);
+
+    Observable<HistoryItem> getAllQueryHistory();
 }
