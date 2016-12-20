@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -27,6 +29,9 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     private ProgressBar mProgressBarSearch;
 
     @NonNull
+    private ViewGroup mLinearLayoutEmptyResult;
+
+    @NonNull
     public static SearchFragment newInstance() {
         return new SearchFragment();
     }
@@ -46,6 +51,13 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
         super.onViewCreated(view, savedInstanceState);
         mTextViewResult = (TextView) view.findViewById(R.id.textview_result);
         mProgressBarSearch = (ProgressBar) view.findViewById(R.id.progressbar_search);
+        mLinearLayoutEmptyResult = (ViewGroup) view.findViewById(R.id.linearlayout_empty_result);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mPresenter.start();
     }
 
     @Override
@@ -73,6 +85,12 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
     @UiThread
     @Override
+    public void initViews() {
+        mLinearLayoutEmptyResult.setVisibility(View.GONE);
+    }
+
+    @UiThread
+    @Override
     public void alert(@Nullable String message) {
         AlertUtil.alert(getActivity().getApplicationContext(), message);
     }
@@ -86,14 +104,16 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
     @UiThread
     @Override
     public void emptyResult() {
-        AlertUtil.alert(getActivity().getApplicationContext(), getString(R.string.error_empty_result));
+        mLinearLayoutEmptyResult.setVisibility(View.VISIBLE);
     }
 
+    @UiThread
     @Override
     public void showSearchIndicator() {
         mProgressBarSearch.setVisibility(View.VISIBLE);
     }
 
+    @UiThread
     @Override
     public void hideSearchIndicator() {
         mProgressBarSearch.setVisibility(View.GONE);

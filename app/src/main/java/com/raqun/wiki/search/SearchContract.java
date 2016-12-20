@@ -8,7 +8,7 @@ import com.raqun.wiki.BaseView;
 /**
  * Created by tyln on 21.08.16.
  */
-public interface SearchContract {
+interface SearchContract {
     interface View extends BaseView<Presenter> {
         void showSearchResult(@NonNull String result);
 
@@ -17,9 +17,11 @@ public interface SearchContract {
         void showSearchIndicator();
 
         void hideSearchIndicator();
+
+        void initViews();
     }
 
     interface Presenter extends BasePresenter {
-        // Marker
+        void start();
     }
 }

@@ -43,6 +43,11 @@ class SearchPresenter implements SearchContract.Presenter {
     }
 
     @Override
+    public void start() {
+        mView.initViews();
+    }
+
+    @Override
     public void subscribe() {
         search();
     }

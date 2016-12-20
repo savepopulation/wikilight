@@ -6,6 +6,6 @@
 
     <!-- Alerts -->
     <string name="error_empty_query">Pleas enter a valid Search Query!</string>
-    <string name="error_empty_result">No Result Found!</string>
+    <string name="error_empty_result">Sorry!\nNo result found for your search.</string>
 
 </resources>
