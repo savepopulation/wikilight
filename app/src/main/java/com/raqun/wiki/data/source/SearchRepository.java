@@ -13,6 +13,7 @@ import com.raqun.wiki.data.source.local.SearchLocalDataSource;
 import com.raqun.wiki.data.source.remote.SearchRemoteDataSource;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -41,10 +42,7 @@ public final class SearchRepository implements SearchDataSource {
     private final SearchLocalDataSource mSearchLocalDataSource;
 
     @Nullable
-    private LinkedHashMap<String, Page> mResultCache;
-
-    @Nullable
-    private ArrayList<HistoryItem> mQueryCache;
+    private HashMap<String, Page> mResultCache;
 
     @Inject
     SearchRepository(@NonNull @Remote SearchRemoteDataSource searchRemoteDataSource, @NonNull @Local SearchLocalDataSource searchLocalDataSource) {
@@ -110,19 +108,7 @@ public final class SearchRepository implements SearchDataSource {
     @NonNull
     @Override
     public Observable<HistoryItem> getAllQueryHistory() {
-        if (mQueryCache != null && mQueryCache.size() > 0) {
-            return Observable.from(mQueryCache);
-        } else {
-            if (mQueryCache == null) {
-                mQueryCache = new ArrayList<>();
-            }
-            return mSearchLocalDataSource.getAllQueryHistory().doOnNext(new Action1<HistoryItem>() {
-                @Override
-                public void call(HistoryItem historyItem) {
-                    mQueryCache.add(historyItem);
-                }
-            });
-        }
+        return mSearchLocalDataSource.getAllQueryHistory();
     }
 
     @Nullable
