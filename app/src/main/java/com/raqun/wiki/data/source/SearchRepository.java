@@ -11,6 +11,7 @@ import com.raqun.wiki.data.Query;
 import com.raqun.wiki.data.Result;
 import com.raqun.wiki.data.source.local.SearchLocalDataSource;
 import com.raqun.wiki.data.source.remote.SearchRemoteDataSource;
+import com.raqun.wiki.utils.ValidationUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,7 +94,7 @@ public final class SearchRepository implements SearchDataSource {
 
     @Override
     public Observable<HistoryItem> searchHistory(@Nullable final String query) {
-        if (TextUtils.isEmpty(query)) {
+        if (ValidationUtil.isNullOrEmpty(query)) {
             return getAllQueryHistory();
         } else {
             return getAllQueryHistory().filter(new Func1<HistoryItem, Boolean>() {

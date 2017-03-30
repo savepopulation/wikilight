@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.source.SearchRepository;
+import com.raqun.wiki.utils.ValidationUtil;
 
 import javax.inject.Inject;
 
@@ -63,7 +64,7 @@ class SearchPresenter implements SearchContract.Presenter {
     }
 
     private void search() {
-        if (TextUtils.isEmpty(mQuery)) {
+        if (ValidationUtil.isNullOrEmpty(mQuery)) {
             return;
         }
 
@@ -86,7 +87,7 @@ class SearchPresenter implements SearchContract.Presenter {
                     public void onNext(Page page) {
                         mView.hideSearchIndicator();
                         final String content = page.getContent();
-                        if (TextUtils.isEmpty(content)) {
+                        if (ValidationUtil.isNullOrEmpty(content)) {
                             mView.emptyResult();
                             return;
                         }

@@ -8,6 +8,7 @@ import android.util.Log;
 import com.raqun.wiki.data.HistoryItem;
 import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.source.SearchRepository;
+import com.raqun.wiki.utils.ValidationUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,7 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void search(@NonNull String query) {
-        if (TextUtils.isEmpty(query)) {
+        if (ValidationUtil.isNullOrEmpty(query)) {
             mView.onInvalidQuery();
             return;
         }
