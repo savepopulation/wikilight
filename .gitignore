@@ -8,3 +8,9 @@
 /build
 /captures
 /gradle
+gradlew
+gradlew.bat
+gradle.properties
+/projectFilesBackup
+*.apk
+*.jks
