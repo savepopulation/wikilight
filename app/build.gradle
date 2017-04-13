@@ -17,8 +17,8 @@ repositories {
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'realm-android'
 
-def mainVersionName = "1.0.0"
-def mainVersionCode = 1
+def mainVersionName = "1.0.1"
+def mainVersionCode = 2
 
 android {
 
