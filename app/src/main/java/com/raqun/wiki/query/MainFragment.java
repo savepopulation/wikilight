@@ -15,8 +15,8 @@ import com.raqun.wiki.R;
 import com.raqun.wiki.BaseFragment;
 import com.raqun.wiki.data.HistoryItem;
 import com.raqun.wiki.search.SearchActivity;
-import com.raqun.wiki.utils.AlertUtil;
-import com.raqun.wiki.utils.DividerDecorator;
+import com.raqun.wiki.util.AlertUtil;
+import com.raqun.wiki.util.DividerDecorator;
 
 import java.util.List;
 

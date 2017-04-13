@@ -6,14 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
 import com.raqun.wiki.BaseFragment;
-import com.raqun.wiki.utils.AlertUtil;
+import com.raqun.wiki.util.AlertUtil;
 
 /**
  * Created by tyln on 21.08.16.

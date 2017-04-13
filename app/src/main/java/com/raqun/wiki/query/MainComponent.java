@@ -1,7 +1,7 @@
 package com.raqun.wiki.query;
 
 import com.raqun.wiki.data.source.SearchRepositoryComponent;
-import com.raqun.wiki.utils.FragmentScoped;
+import com.raqun.wiki.util.FragmentScoped;
 
 import dagger.Component;
 

@@ -1,4 +1,4 @@
-package com.raqun.wiki.utils;
+package com.raqun.wiki.util;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

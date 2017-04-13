@@ -2,13 +2,10 @@ package com.raqun.wiki.query;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Log;
 
 import com.raqun.wiki.data.HistoryItem;
-import com.raqun.wiki.data.Page;
 import com.raqun.wiki.data.source.SearchRepository;
-import com.raqun.wiki.utils.ValidationUtil;
+import com.raqun.wiki.util.ValidationUtil;
 
 import java.util.ArrayList;
 import java.util.List;

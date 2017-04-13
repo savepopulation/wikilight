@@ -8,12 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.raqun.wiki.Constants;
 import com.raqun.wiki.R;
 import com.raqun.wiki.data.HistoryItem;
-import com.raqun.wiki.utils.DateUtil;
+import com.raqun.wiki.util.DateUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**

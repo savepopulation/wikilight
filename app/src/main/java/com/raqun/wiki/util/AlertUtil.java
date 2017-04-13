@@ -1,4 +1,4 @@
-package com.raqun.wiki.utils;
+package com.raqun.wiki.util;
 
 import android.content.Context;
 import android.content.DialogInterface;

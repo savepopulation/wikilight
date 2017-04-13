@@ -2,33 +2,23 @@ package com.raqun.wiki.data.source;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Log;
 
 import com.raqun.wiki.data.HistoryItem;
 import com.raqun.wiki.data.Page;
-import com.raqun.wiki.data.Query;
-import com.raqun.wiki.data.Result;
 import com.raqun.wiki.data.source.local.SearchLocalDataSource;
 import com.raqun.wiki.data.source.remote.SearchRemoteDataSource;
-import com.raqun.wiki.utils.ValidationUtil;
+import com.raqun.wiki.util.ValidationUtil;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import io.realm.Realm;
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by tyln on 16.08.16.
