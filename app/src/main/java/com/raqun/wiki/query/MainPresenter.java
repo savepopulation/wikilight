@@ -21,8 +21,8 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * Created by tyln on 19.09.16.
  */
-class MainPresenter implements MainContract.Presenter {
-    @Nullable
+final class MainPresenter implements MainContract.Presenter {
+    @NonNull
     private MainContract.View mView;
 
     @Nullable

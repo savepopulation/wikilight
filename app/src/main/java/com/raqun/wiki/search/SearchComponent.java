@@ -1,5 +1,7 @@
 package com.raqun.wiki.search;
 
+import android.support.annotation.NonNull;
+
 import com.raqun.wiki.data.source.SearchRepositoryComponent;
 import com.raqun.wiki.util.FragmentScoped;
 
@@ -12,5 +14,5 @@ import dagger.Component;
 @FragmentScoped
 @Component(dependencies = SearchRepositoryComponent.class, modules = SearchPresenterModule.class)
 interface SearchComponent {
-    void inject(SearchActivity activity);
+    void inject(@NonNull SearchActivity activity);
 }

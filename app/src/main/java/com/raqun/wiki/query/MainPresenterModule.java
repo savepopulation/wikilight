@@ -10,7 +10,8 @@ import dagger.Provides;
  */
 
 @Module
-class MainPresenterModule {
+final class MainPresenterModule {
+    @NonNull
     private final MainContract.View mView;
 
     MainPresenterModule(@NonNull MainContract.View view) {
@@ -18,6 +19,7 @@ class MainPresenterModule {
     }
 
     @Provides
+    @NonNull
     MainContract.View provideMainContractView() {
         return this.mView;
     }

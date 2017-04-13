@@ -1,5 +1,7 @@
 package com.raqun.wiki.query;
 
+import android.support.annotation.NonNull;
+
 import com.raqun.wiki.data.source.SearchRepositoryComponent;
 import com.raqun.wiki.util.FragmentScoped;
 
@@ -11,5 +13,5 @@ import dagger.Component;
 @FragmentScoped
 @Component(dependencies = SearchRepositoryComponent.class, modules = MainPresenterModule.class)
 interface MainComponent {
-    void inject(MainActivity activity);
+    void inject(@NonNull MainActivity activity);
 }

@@ -23,7 +23,9 @@ import java.util.List;
 /**
  * Created by tyln on 19.09.16.
  */
-public class MainFragment extends BaseFragment implements MainContract.View, HistoryAdapter.OnItemClickListener {
+public final class MainFragment extends BaseFragment
+        implements MainContract.View, HistoryAdapter.ItemClickListener {
+
     @NonNull
     private MainContract.Presenter mPresenter;
 

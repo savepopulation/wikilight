@@ -13,7 +13,7 @@ import io.fabric.sdk.android.Fabric;
 /**
  * Created by tyln on 16.08.16.
  */
-public class WikiApplication extends Application {
+public final class WikiApplication extends Application {
     @NonNull
     private SearchRepositoryComponent mSearcRepositoryComponent;
 

@@ -18,14 +18,14 @@ import java.util.List;
  * Created by tyln on 16.11.2016.
  */
 
-class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
+final class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
     @NonNull
     private final List<HistoryItem> mHistoryItems;
 
     @Nullable
-    private final OnItemClickListener mItemClickListener;
+    private final ItemClickListener mItemClickListener;
 
-    HistoryAdapter(@NonNull List<HistoryItem> historyItems, @Nullable OnItemClickListener itemClickListener) {
+    HistoryAdapter(@NonNull List<HistoryItem> historyItems, @Nullable ItemClickListener itemClickListener) {
         if (historyItems == null) {
             throw new IllegalArgumentException("List cannot be null");
         }
@@ -61,7 +61,7 @@ class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
         return mHistoryItems.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    final class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView mTextViewQuery;
         private final TextView mTextViewDate;
 
@@ -72,7 +72,7 @@ class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
         }
     }
 
-    interface OnItemClickListener {
+    interface ItemClickListener {
         void onItemClicked(@Nullable String query);
     }
 }

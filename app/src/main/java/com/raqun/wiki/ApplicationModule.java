@@ -20,6 +20,7 @@ public class ApplicationModule {
     }
 
     @Provides
+    @NonNull
     Context provideContext() {
         return this.mContext;
     }

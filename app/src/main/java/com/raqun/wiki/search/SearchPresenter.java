@@ -19,7 +19,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * Created by tyln on 21.08.16.
  */
-class SearchPresenter implements SearchContract.Presenter {
+final class SearchPresenter implements SearchContract.Presenter {
     @Nullable
     private SearchContract.View mView;
 

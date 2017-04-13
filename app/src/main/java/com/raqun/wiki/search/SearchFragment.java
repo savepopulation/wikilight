@@ -17,7 +17,7 @@ import com.raqun.wiki.util.AlertUtil;
 /**
  * Created by tyln on 21.08.16.
  */
-public class SearchFragment extends BaseFragment implements SearchContract.View {
+public final class SearchFragment extends BaseFragment implements SearchContract.View {
     @NonNull
     private SearchContract.Presenter mPresenter;
 

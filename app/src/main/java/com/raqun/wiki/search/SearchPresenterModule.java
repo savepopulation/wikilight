@@ -11,7 +11,7 @@ import dagger.Provides;
  */
 
 @Module
-class SearchPresenterModule {
+final class SearchPresenterModule {
     @NonNull
     private final SearchContract.View mView;
 
@@ -24,11 +24,13 @@ class SearchPresenterModule {
     }
 
     @Provides
+    @NonNull
     SearchContract.View provideSearchContractView() {
         return mView;
     }
 
     @Provides
+    @Nullable
     String provideQuery() {
         return this.mQuery;
     }
